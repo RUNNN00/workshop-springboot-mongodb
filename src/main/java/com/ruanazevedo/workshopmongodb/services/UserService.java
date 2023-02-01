@@ -30,12 +30,23 @@ public class UserService {
 		return repository.insert(obj);
 	}
 	
+	public void delete(String id) {
+		findById(id); // verifica se o objeto existe
+		repository.deleteById(id);
+	}
+	
+	public User update(User obj) {
+		User newObj = repository.findById(obj.getId()).get();
+		updateData(newObj, obj);
+		return repository.save(newObj);
+	}
+	
 	public User fromDTO(UserDTO objDto) {
 		return new User(objDto.getId(), objDto.getName(), objDto.getEmail());
 	}
 	
-	public void delete(String id) {
-		findById(id); // verifica se o objeto existe
-		repository.deleteById(id);
+	private void updateData(User user, User obj) {
+		user.setName(obj.getName());
+		user.setEmail(obj.getEmail());
 	}
 }
