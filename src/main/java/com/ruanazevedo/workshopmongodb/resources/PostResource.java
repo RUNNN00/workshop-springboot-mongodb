@@ -1,5 +1,6 @@
 package com.ruanazevedo.workshopmongodb.resources;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,18 @@ public class PostResource {
 	public ResponseEntity<List<Post>> findByTitle(@RequestParam(value = "text", defaultValue = "") String text) {
 		String textDecoded = URL.decodeParam(text);
 		List<Post> posts = service.findByTitle(textDecoded);
+		return ResponseEntity.ok(posts);
+	}
+	
+	@GetMapping(value = "/fullsearch")
+	public ResponseEntity<List<Post>> fullSearch(
+			@RequestParam(value = "text", defaultValue = "") String text,
+			@RequestParam(value = "minDate", defaultValue = "") String minDate,
+			@RequestParam(value = "maxDate", defaultValue = "") String maxDate) {
+		String textDecoded = URL.decodeParam(text);
+		Date min = URL.convertDate(minDate, new Date(0L));
+		Date max = URL.convertDate(maxDate, new Date());		
+		List<Post> posts = service.fullSearch(textDecoded, min, max);
 		return ResponseEntity.ok(posts);
 	}
 }
