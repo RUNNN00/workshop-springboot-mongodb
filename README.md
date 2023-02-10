@@ -8,7 +8,7 @@ Por [Ruan Azevedo](https://www.linkedin.com/in/ruan-azevedo-904203151)
 Este é um projeto de aprendizagem das ferramentas **Springboot** e banco de dados **MongoDB**, curso organizado pela [DevSuperior](https://devsuperior.com "Site da DevSuperior") na plataforma
 [Udemy](https://udemy.com)
 
-Esta aplicação é um simples sistema de posts e comentários feitos por usuários. 
+Esta aplicação é um simples sistema de posts e comentários feitos por usuários. Por se tratar apenas do back-end, ele disponibiliza endpoints REST para recuperar e mostrar as informações em JSON.
 
 Os objetivos desse projeto consiste em:
 - Compreender as principais diferenças entre paradigma orientado a documentos e relacional
@@ -43,7 +43,7 @@ cd workshop-springboot-mongodb
 # executar o projeto
 ./mvnw spring-boot:run
 ```
-Como este projeto retrata apenas o back-end, recomendo fazer as requisições GET utilizando a ferramenta [Postman.](https://www.postman.com)
+Recomendo fazer as requisições REST utilizando a ferramenta [Postman.](https://www.postman.com)
 
 Alguns exemplos de *endpoints*:
 
